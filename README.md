@@ -8,14 +8,13 @@ Why do we need this tool?
 How this script works?   
 1, It will use "POSCAR" as input file, sort the atom order with thier coordinate, and generate the new "POSCAR_sorted" file as output file.  
 2, It will preserve the "F" or "T" tags after the each atom's coordinate.   
-3, It will only change the atom order (line 6), atom number (line 7), and atom coordinate (everything after line 9), all the other lines will be preserved as original POSCAR file.   
+3, It will only change the title (line 1), atom order (line 6), atom number (line 7), and atom coordinate (everything after line 9), all the other lines will be preserved as original POSCAR file.   
   
 How to use this bash script?   
 1, Put "sortatoms.sh" in the same directory with the POSCAR you need to change.  
-2, Modify the variable "sorted_types" based on your own system, for example, for my system, it's "sorted_types=("Cu" "C" "O" "H") "  
+2, Modify the variable "sorted_types" based on your own system, for example, for my system, it's "sorted_types=("Cu" "C" "O" "H") ", also change the title line at the end of the file.   
 3, run "chmod u+x sortatoms.sh" in command line to make it executable.   
 4, run the script using "./sortatoms.sh".  
-Optional: manually change the title line (line 1).  
   
    
 Author: Aojie Li @ Lehigh University
