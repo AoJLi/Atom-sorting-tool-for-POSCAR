@@ -55,8 +55,8 @@ for atom in "${sorted_types[@]}"; do
 done
 
 # Replace atom types and numbers in the output file
-echo "${new_atom_types[@]}" >> "$output_file"
-echo "${new_atom_numbers[@]}" >> "$output_file"
+echo "${new_atom_types[@]}" | sed 's/ /   /g' >> "$output_file"
+echo "${new_atom_numbers[@]}" | sed 's/ /   /g' >> "$output_file"
 
 # Append the selective dynamics and cartesian lines (8th and 9th lines)
 sed -n '8,9p' "$input_file" >> "$output_file"
@@ -65,5 +65,8 @@ sed -n '8,9p' "$input_file" >> "$output_file"
 for atom in "${sorted_types[@]}"; do
     echo "${atom_dict["$atom"]}" | sed '/^$/d' >> "$output_file"
 done
+
+# Edit the title line
+sed -i '1s/.*/Pd   C   O   H/' "$output_file"
 
 echo "Reordering complete. Output saved in $output_file"
